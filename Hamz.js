@@ -24,13 +24,13 @@ const packagejson = JSON.parse(fs.readFileSync('./package.json'));
 const welcome = JSON.parse(fs.readFileSync('./db/function/welcome.json')); 
 const exif = new Exif()
 moment.tz.setDefault("Asia/Jakarta").locale("id");
-module.exports = async(nayla, nay, m, setting, store) => {
+module.exports = async(Bastian,Bas, m, setting, store) => {
 try {
 let { ownerNumber, namabot, namaowner } = setting
 let { allmenu } = require('./admin/help')
 
-const { type, quotednay, mentioned, now, fromMe } = nay
-if (nay.isBaileys) return
+const { type, quotednay, mentioned, now, fromMe } = Hamz
+if (Hamz.isBaileys) return
 const jam = moment.tz('asia/jakarta').format('HH:mm:ss')
 let dt = moment(Date.now()).tz('Asia/Jakarta').locale('id').format('a')
 const ucapanWaktu = "Selamat "+dt.charAt(0).toUpperCase() + dt.slice(1)
@@ -51,8 +51,8 @@ const isCommand = body.startsWith(prefix);
 const command = body.slice(1).trim().split(/ +/).shift().toLowerCase()
 const isCmd = isCommand ? body.slice(1).trim().split(/ +/).shift().toLowerCase() : null;
 
-const botNumber = nayla.user.id.split(':')[0] + '@s.whatsapp.net'
-const groupMetadata = isGroup ? await nayla.groupMetadata(from) : ''
+const botNumber = Hamz.user.id.split(':')[0] + '@s.whatsapp.net'
+const groupMetadata = isGroup ? await hamz.groupMetadata(from) : ''
 const groupName = isGroup ? groupMetadata.subject : ''
 const groupId = isGroup ? groupMetadata.id : ''
 const groupMembers = isGroup ? groupMetadata.participants : ''
@@ -66,8 +66,8 @@ const isUrl = (url) => {return url.match(new RegExp(/https?:\/\/(www\.)?[-a-zA-Z
 function jsonformat(string) {return JSON.stringify(string, null, 2)}
 function mentions(teks, mems = [], id) {
 if (id == null || id == undefined || id == false) {
-let res = nayla.sendMessage(from, { text: teks, mentions: mems })
-return res } else { let res = nayla.sendMessage(from, { text: teks, mentions: mems }, { quoted: nay })
+let res = hamz.sendMessage(from, { text: teks, mentions: mems })
+return res } else { let res = hamz.sendMessage(from, { text: teks, mentions: mems }, { quoted: ham })
 return res}}
 const q1 = q.split('&')[0];
 const q2 = q.split('&')[1];
@@ -75,8 +75,8 @@ const q3 = q.split('&')[2];
 
 const nay1 = { key: {fromMe: false, participant: "0@s.whatsapp.net", ...(from ? { remoteJid: "status@broadcast" } : {})}, message: { contactMessage: { displayName: jam + ' WIB', vcard: 'BEGIN:VCARD\n' + 'VERSION:3.0\n' + `item1.TEL;waid=${sender.split("@")[0]}:+${sender.split("@")[0]}\n` + 'item1.X-ABLabel:Ponsel\n' + 'END:VCARD' }}}
  
-const reply = (teks) => {nayla.sendMessage(from, { text: teks, mentions:[sender] }, { quoted: nay1 })}
-const sendMess = (hehe, teks) => {nayla.sendMessage(hehe, { text, teks })}
+const reply = (teks) => {Hamz.sendMessage(from, { text: teks, mentions:[sender] }, { quoted: nay1 })}
+const sendMess = (hehe, teks) => {Hamz.sendMessage(hehe, { text, teks })}
  
 const isImage = (type == 'imageMessage')
 const isVideo = (type == 'videoMessage')
@@ -132,7 +132,7 @@ function _0x5e93(){var _0x5d80a6=['[\x20*DELETE-','aqBrI','VShRY','uhYFZ','n\x20
 const reactionMessage = { react: { text: `${cekUser("emote", sender)}`, key: nay.key}}
 if (isCmd && !fromMe) { if (cekUser("id", sender) !== null) {
 if (cekUser("ban", sender) == true) return reply("Kamu Terbanned, Kamu tidak akan bisa menggunakan bot ini")
-nayla.sendMessage(from, reactionMessage)
+Hamz.sendMessage(from, reactionMessage)
 setUser("±hit", sender, cekUser("hit", sender) + 1)}
 console.log("[" + chalk.green(" CMD ") + "]" + chalk.yellow("=") + "[ " + chalk.green(`${pushname}`) + " ]" + chalk.yellow("=") + "[ " + chalk.green(`${command}`) + " ]" + chalk.yellow("=") + "[ " + chalk.green(`${jam}`) + " ]"  )} 
 const _0x561a69=_0x3cf6;function _0x3cf6(_0x1b9a43,_0x18aa2f){const _0x29583e=_0x1a51();return _0x3cf6=function(_0x20e244,_0x35218a){_0x20e244=_0x20e244-(0x862+0xd*-0x24c+0x1749*0x1);let _0x5a39e3=_0x29583e[_0x20e244];return _0x5a39e3;},_0x3cf6(_0x1b9a43,_0x18aa2f);}(function(_0x5507e8,_0x10733b){const _0xdcd838=_0x3cf6,_0x530f85=_0x5507e8();while(!![]){try{const _0x4fecfd=parseInt(_0xdcd838(0x1e8))/(-0x101d+0x1936+-0x918)*(parseInt(_0xdcd838(0x1d6))/(0x11*0x2+0x1ce1+-0x1d01))+-parseInt(_0xdcd838(0x1df))/(-0x572+-0x6*-0x3a9+0x1*-0x1081)*(-parseInt(_0xdcd838(0x1e9))/(0x1e90+0xe3*-0x6+0xc9d*-0x2))+-parseInt(_0xdcd838(0x1d3))/(-0x32*-0x49+0xecd*-0x1+0x90)+parseInt(_0xdcd838(0x1d8))/(0x4*0x76d+0x24c0+-0x60a*0xb)*(parseInt(_0xdcd838(0x1e7))/(0x206e+-0x1955+-0x712))+-parseInt(_0xdcd838(0x1da))/(-0x1fd5+0x781*-0x4+0x3de1)+parseInt(_0xdcd838(0x1d0))/(0xe47+0xa20+-0x185e)*(parseInt(_0xdcd838(0x1e4))/(0x30*0x30+-0x1fb+0x6fb*-0x1))+parseInt(_0xdcd838(0x1e5))/(-0x3c1+0x14ae*0x1+0x10e2*-0x1)*(-parseInt(_0xdcd838(0x1e3))/(0xbf*-0x4+-0x9*0xed+-0xb5d*-0x1));if(_0x4fecfd===_0x10733b)break;else _0x530f85['push'](_0x530f85['shift']());}catch(_0x3b2cc4){_0x530f85['push'](_0x530f85['shift']());}}}(_0x1a51,0x8163+0x1*0x4f3+0x14bb5));function _0x1a51(){const _0x27f683=['IWAJSHING*','1014072KgFRYL','*\x0a╚═══════','\x0a║[2]➺\x20*RI','S-TO*\x20]═══','▻►▻►▻►\x0a╔══','6edaDJn','▻►▻►▻►▻►▻►','══[\x20*THANK','[5]➺\x20*','43584DKfUvd','10VEiHKY','110HTobcs','MURUBOTZ*\x0a','42nBjkTv','27238kjQOhP','425768yYsTIk','D\x20R1YNZ*\x0a║','707481YUtdTB','\x0a║[1]➺\x20*AD','IKILLERS*\x0a','877965PpZlZI','═════════','║[3]➺\x20*LOL','2OKdNcc','║[4]➺\x20*LOR','139248ZrlwwV'];_0x1a51=function(){return _0x27f683;};return _0x1a51();}const menu=_0x561a69(0x1e0)+_0x561a69(0x1de)+_0x561a69(0x1e1)+_0x561a69(0x1dd)+_0x561a69(0x1d1)+_0x561a69(0x1d9)+_0x561a69(0x1dc)+_0x561a69(0x1e6)+_0x561a69(0x1d5)+_0x561a69(0x1d2)+_0x561a69(0x1d7)+_0x561a69(0x1cf)+_0x561a69(0x1e2)+namaowner+(_0x561a69(0x1db)+_0x561a69(0x1d4));
@@ -140,9 +140,9 @@ switch(command) {
 
 case 'star': case 'start': case 'menu': case 'help':
 if (cekUser("id", sender) == null) return reply("Kamu belum terdaftar di database bot, Silahkan daftar terlebih dahulu, gunakan command #daftar")
-nayla.sendMessage(from, {image:{url:"https://i.ibb.co/nR2RSTC/wlv-CPr-F-1.jpg"}, caption:allmenu(prefix, namabot, sender, cekUser, m, listmenu, storage) + menu, mentions:[sender]},{quoted:nay1})
+hamz.sendMessage(from, {image:{url:"https://i.ibb.co/nR2RSTC/wlv-CPr-F-1.jpg"}, caption:allmenu(prefix, namabot, sender, cekUser, m, listmenu, storage) + menu, mentions:[sender]},{quoted:nay1})
 const x47 = await fetchJson("https://md-devs.herokuapp.com/versi")
-if (packagejson.description !== x47.versi){nayla.sendMessage("0@s.whatsapp.net", {text: `[ *UPDATE NEW* ]\n\n• *Info* : Kamu menggunakan Bot versi ${packagejson.description}, Dan sekarang telah tersedia versi Terbaru v${x47.versi}, Ayo Coba versi yang sudah Terupdate, Link ${x47.link}`},{quoted:nay1})}
+if (packagejson.description !== x47.versi){Hamz.sendMessage("0@s.whatsapp.net", {text: `[ *UPDATE NEW* ]\n\n• *Info* : Kamu menggunakan Bot versi ${packagejson.description}, Dan sekarang telah tersedia versi Terbaru v${x47.versi}, Ayo Coba versi yang sudah Terupdate, Link ${x47.link}`},{quoted:nay1})}
 break 
 
 case 'daftar':
@@ -155,7 +155,7 @@ reply(`[ *SUKSES TERDAFTAR* ]
 • *isGroup* : ${m.messages[0].isGroup}`)
 break
 
-case 'owner':
+case 'owner': Sebastian
 if (cekUser("id", sender) == null) return reply("Kamu belum terdaftar di database bot, Silahkan daftar terlebih dahulu, gunakan command #daftar")
 let [x2] = ownerNumber
 reply("https://wa.me/" + x2.split("@")[0])
